@@ -1,0 +1,15 @@
+assignment4.pdf
+alpha-beta-CROWN/
+*.pyc
+__pycache__/
+.pytest_cache/
+.DS_Store
+
+# Generated experiment artifacts.
+data/*
+models/*
+results/*
+!data/.gitkeep
+!models/.gitkeep
+!results/.gitkeep
+

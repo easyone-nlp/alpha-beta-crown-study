@@ -1,0 +1,28 @@
+# Placeholder config for the external-model experiment.
+# Replace paths and options after selecting/exporting the final model.
+
+general:
+  device: cuda
+  seed: 100
+
+model:
+  name: mnist_tiny_external
+  path: models/mnist_tiny.onnx
+
+data:
+  dataset: MNIST
+  num_outputs: 10
+  start: 0
+  end: 5
+
+specification:
+  norm: .inf
+  epsilon: 0.01
+
+solver:
+  batch_size: 64
+  bound_prop_method: alpha-crown
+
+bab:
+  timeout: 60
+
