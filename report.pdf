@@ -1,0 +1,185 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 3139 >>
+stream
+BT
+/F1 10 Tf
+50 780 Td
+14 TL
+(Assignment 4 Report: alpha-beta-CROWN) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Repository Exploration) Tj
+T*
+() Tj
+T*
+(I inspected the alpha-beta-CROWN repository, focusing on `complete_verifier/models` and) Tj
+T*
+(`complete_verifier/exp_configs`. The models directory contains several benchmark) Tj
+T*
+(families: MNIST and CIFAR SDP models, ERAN MNIST/CIFAR PyTorch models, OVAL CIFAR) Tj
+T*
+(models, Marabou CIFAR10 models, toy MNIST networks, CIFAR-10 ResNet models, non-) Tj
+T*
+(ReLU/custom-operation examples, L2-norm examples, and VNN-COMP benchmark placeholders.) Tj
+T*
+(The experiment configurations are organized into groups such as `beta_crown`, `GCP-) Tj
+T*
+(CROWN`, `BICCOS`, `bab_attack`, `tutorial_examples`, and VNN-COMP year folders.) Tj
+T*
+() Tj
+T*
+(The main difference I observed from Marabou is the workflow. In Marabou, my script) Tj
+T*
+(loaded a `.nnet` file and directly added input bounds and output inequalities. In alpha-) Tj
+T*
+(beta-CROWN, the YAML file is the center of the experiment: it names the model loader,) Tj
+T*
+(dataset loader, norm, epsilon, PGD attack settings, solver parameters, and branch-and-) Tj
+T*
+(bound timeout. This made the setup more structured, but also stricter because custom) Tj
+T*
+(keys and paths must match the verifier configuration system.) Tj
+T*
+() Tj
+T*
+(External Model and Dataset) Tj
+T*
+() Tj
+T*
+(To make the comparison meaningful, I reused the same model family from Assignment 3. The) Tj
+T*
+(dataset is EMNIST Digits, an external handwritten-character benchmark loaded through) Tj
+T*
+(`torchvision.datasets.EMNIST`. The preprocessing is the same as before: each 28x28) Tj
+T*
+(grayscale image is average-pooled to 14x14 and flattened into 196 input values in [0,) Tj
+T*
+(1]. The model is `TinyEmnistMLP`, a small ReLU network with architecture `196 -> 32 ->) Tj
+T*
+(10`. For Marabou it was exported as `.nnet`; for alpha-beta-CROWN I saved the same) Tj
+T*
+(architecture as PyTorch `.pt` and also exported ONNX for reference. The selected test) Tj
+T*
+(sample has true label 0, predicted label 0, and the retrained model reached 95.5%) Tj
+T*
+(accuracy on the balanced EMNIST test subset.) Tj
+T*
+() Tj
+T*
+(The verified property is local L-infinity robustness: for all perturbed inputs x') Tj
+T*
+(satisfying ||x' - x||_inf <= epsilon and clipped to [0, 1], the model should keep the) Tj
+T*
+(original predicted class above every competing class. I ran two epsilons, 0.02 and 0.2,) Tj
+T*
+(to match the Marabou experiment.) Tj
+T*
+() Tj
+T*
+(Results and Interpretation) Tj
+T*
+() Tj
+T*
+(| Tool | Epsilon | Result | Status | Runtime |) Tj
+T*
+(| --- | ---: | --- | --- | ---: |) Tj
+T*
+(| alpha-beta-CROWN | 0.02 | verified | safe-incomplete | 17.44398 s |) Tj
+T*
+(| alpha-beta-CROWN | 0.2 | falsified | unsafe-pgd | 0.43998 s |) Tj
+T*
+(| Marabou | 0.02 | verified | UNSAT | recorded in Assignment 3 |) Tj
+T*
+(| Marabou | 0.2 | falsified | SAT | recorded in Assignment 3 |) Tj
+T*
+() Tj
+T*
+(For epsilon 0.02, alpha-beta-CROWN first ran PGD and found no violation, then proved the) Tj
+T*
+(property with initial CROWN bounds. For epsilon 0.2, PGD quickly found an unsafe) Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+4 0 obj
+<< /Length 1484 >>
+stream
+BT
+/F1 10 Tf
+50 780 Td
+14 TL
+(adversarial example. This matches the qualitative Marabou behavior: the smaller) Tj
+T*
+(perturbation was safe, while the larger perturbation admitted a counterexample.) Tj
+T*
+() Tj
+T*
+(Comparison and Discussion) Tj
+T*
+() Tj
+T*
+(On this tiny ReLU MLP, both tools were able to answer the same robustness question.) Tj
+T*
+(Marabou gave a very direct logical encoding style: I could loop over target classes and) Tj
+T*
+(add inequalities by hand. alpha-beta-CROWN required more configuration work, especially) Tj
+T*
+(for the custom EMNIST data loader, but once the YAML and loader were correct it produced) Tj
+T*
+(a compact verified/falsified summary and handled both attack and bound-based) Tj
+T*
+(verification in one pipeline.) Tj
+T*
+() Tj
+T*
+(The biggest strength I saw in alpha-beta-CROWN is that it combines fast adversarial) Tj
+T*
+(search with bound propagation and branch-and-bound. For the unsafe epsilon 0.2 case, it) Tj
+T*
+(found a counterexample in under half a second. For the safe epsilon 0.02 case, the) Tj
+T*
+(initial CROWN bounds were already strong enough to prove robustness. The limitation is) Tj
+T*
+(that custom experiments are sensitive to model/data format details: unsupported config) Tj
+T*
+(keys, path substitution, and custom loader return shapes caused setup issues that had to) Tj
+T*
+(be debugged. Overall, alpha-beta-CROWN felt more scalable and experiment-oriented, while) Tj
+T*
+(Marabou felt more explicit and lower-level.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+7 0 obj
+<< /Type /Catalog /Pages 6 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000003270 00000 n 
+0000003396 00000 n 
+0000004932 00000 n 
+0000005058 00000 n 
+0000005121 00000 n 
+trailer
+<< /Size 8 /Root 7 0 R >>
+startxref
+5170
+%%EOF

@@ -50,6 +50,20 @@ python test.py --abcrown-dir ./alpha-beta-CROWN --config configs/emnist_digits_t
 
 The script writes logs to `results/`.
 
+## Problem 1 Exploration
+
+The alpha-beta-CROWN repository is organized around model artifacts and YAML
+experiment configurations. `complete_verifier/models` includes MNIST/CIFAR SDP
+models, ERAN `.pth` models, OVAL CIFAR models, Marabou CIFAR10 models, toy
+MNIST MLPs, CIFAR-10 ResNets, custom operation examples, non-ReLU examples, and
+VNN-COMP benchmark placeholders. `complete_verifier/exp_configs` contains
+configuration families such as `beta_crown`, `GCP-CROWN`, `BICCOS`,
+`bab_attack`, `tutorial_examples`, and VNN-COMP year folders.
+
+Compared with Marabou, alpha-beta-CROWN is more YAML-driven: the config links
+model loading, dataset loading, perturbation size, attack, solver, and timeout.
+Marabou scripts more directly manipulate input bounds and output inequalities.
+
 ## Problem 2 Experiment
 
 This project reuses the Assignment 3 Marabou model to make the comparison
@@ -79,12 +93,12 @@ See `results/verification_summary.md` and the raw logs in `results/`.
 
 ## Assignment Checklist
 
-- [ ] Explore `complete_verifier/models` and summarize available models.
-- [ ] Explore `complete_verifier/exp_configs` and summarize YAML configurations.
+- [x] Explore `complete_verifier/models` and summarize available models.
+- [x] Explore `complete_verifier/exp_configs` and summarize YAML configurations.
 - [x] Choose an external model and dataset.
 - [x] Export or save the model in a supported PyTorch/ONNX format.
 - [x] Write an alpha-beta-CROWN YAML config.
 - [x] Run verification and record verified/falsified/timeout outcomes.
-- [ ] Write `report.pdf`.
+- [x] Write `report.pdf`.
 - [ ] Commit changes incrementally and push to GitHub.
 

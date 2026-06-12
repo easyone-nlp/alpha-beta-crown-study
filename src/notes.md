@@ -4,9 +4,10 @@ Use this file to record installation issues, model choices, command outputs, and
 
 ## Problem 1: Repository Exploration
 
-- `complete_verifier/models`:
-- `complete_verifier/exp_configs`:
-- Difference from Marabou:
+- `complete_verifier/models`: contains bundled benchmark models grouped by source or experiment family. I found SDP-style MNIST/CIFAR `.model` files, ERAN MNIST and CIFAR PyTorch `.pth` models, OVAL CIFAR models, Marabou CIFAR10 models, toy MNIST MLP models, CIFAR-10 ResNet models, non-ReLU/custom-op examples, L2-norm examples, and VNN-COMP benchmark placeholders.
+- `complete_verifier/exp_configs`: contains YAML files that define complete verification experiments. The major groups include `beta_crown`, `GCP-CROWN`, `BICCOS`, `bab_attack`, `tutorial_examples`, and VNN-COMP year folders such as `vnncomp21`, `vnncomp22`, `vnncomp23`, `vnncomp24`, and `vnncomp25`.
+- The YAML files specify the model path or loader, dataset loader, norm and epsilon, solver options, attack settings, branch-and-bound timeout, and sometimes VNN-LIB/CSV benchmark inputs. This made alpha-beta-CROWN feel more configuration-driven than Marabou.
+- Difference from Marabou: Marabou directly loads a network format such as `.nnet` or ONNX and the script usually constructs explicit variable bounds and output inequalities. alpha-beta-CROWN uses YAML to connect model, data, perturbation, attack, and solver settings, then internally constructs the robustness specifications and runs bound propagation plus branch-and-bound.
 
 ## Problem 2: External Model Experiment
 
