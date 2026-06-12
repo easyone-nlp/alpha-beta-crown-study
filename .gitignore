@@ -5,11 +5,23 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 
-# Generated experiment artifacts.
+# Downloaded datasets can be large; keep generated experiment artifacts small and explicit.
 data/*
-models/*
-results/*
 !data/.gitkeep
+
+# Commit the small EMNIST model/sample artifacts used by the report.
+!models/
+models/*
 !models/.gitkeep
+!models/emnist_digits/
+!models/emnist_digits/*
+
+# Commit verifier logs and summarized results.
+!results/
+results/*
 !results/.gitkeep
+!results/*.log
+!results/*.txt
+!results/*.csv
+!results/*.md
 

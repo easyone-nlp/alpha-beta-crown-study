@@ -16,7 +16,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--config",
-        default="configs/mnist_tiny.yaml",
+        default="configs/emnist_digits_tiny_mlp.yaml",
         help="Project YAML config to pass to abcrown.py.",
     )
     parser.add_argument(

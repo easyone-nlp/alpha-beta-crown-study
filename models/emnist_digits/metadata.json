@@ -1,0 +1,43 @@
+{
+  "dataset": "EMNIST Digits loaded with torchvision.datasets.EMNIST",
+  "dataset_origin": "EMNIST external handwritten character benchmark",
+  "split": "digits",
+  "preprocessing": "28x28 grayscale -> average pool to 14x14 -> flatten to 196 values in [0, 1]",
+  "classes": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "architecture": "196 -> 32 ReLU -> 10",
+  "seed": 7,
+  "train_samples_per_class": 1000,
+  "test_samples_per_class": 200,
+  "epochs": 30,
+  "train_accuracy": 0.9932,
+  "test_accuracy": 0.955,
+  "sample_index_in_balanced_test_subset": 944,
+  "sample_label": 0,
+  "sample_label_name": "0",
+  "sample_prediction": 0,
+  "sample_prediction_name": "0",
+  "sample_logits": [
+    23.010278701782227,
+    -27.47231101989746,
+    -9.692136764526367,
+    -14.976107597351074,
+    -12.97326946258545,
+    -8.625795364379883,
+    -8.205577850341797,
+    -22.105648040771484,
+    -6.605050563812256,
+    -9.029229164123535
+  ],
+  "sample_logit_margin": 29.615329265594482
+}

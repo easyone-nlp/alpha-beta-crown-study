@@ -1,0 +1,33 @@
+general:
+  device: cpu
+  seed: 100
+  complete_verifier: bab
+  results_file: /home/dilab/Desktop/Jiwon/alpha-beta-crown/results/emnist_digits_tiny_mlp_eps_0.02.txt
+
+model:
+  name: Customized("../src/emnist_digits_ab_crown.py", "tiny_emnist_mlp")
+  path: ${CONFIG_PATH}/../models/emnist_digits/tiny_emnist_mlp.pt
+
+data:
+  dataset: Customized("../src/emnist_digits_ab_crown.py", "emnist_digits_sample")
+  num_outputs: 10
+  start: 0
+  end: 1
+
+specification:
+  norm: .inf
+  epsilon: 0.02
+
+attack:
+  pgd_restarts: 20
+
+solver:
+  batch_size: 256
+  beta-crown:
+    iteration: 20
+
+bab:
+  timeout: 30
+  branching:
+    reduceop: max
+
