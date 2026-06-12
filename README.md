@@ -90,15 +90,3 @@ same model family, sample, and perturbation sizes for comparison.
 | 0.2 | falsified (`unsafe-pgd`) | 0.43998 s | falsified (`SAT`) |
 
 See `results/verification_summary.md` and the raw logs in `results/`.
-
-## Assignment Checklist
-
-- [x] Explore `complete_verifier/models` and summarize available models.
-- [x] Explore `complete_verifier/exp_configs` and summarize YAML configurations.
-- [x] Choose an external model and dataset.
-- [x] Export or save the model in a supported PyTorch/ONNX format.
-- [x] Write an alpha-beta-CROWN YAML config.
-- [x] Run verification and record verified/falsified/timeout outcomes.
-- [x] Write `report.pdf`.
-- [ ] Commit changes incrementally and push to GitHub.
-
