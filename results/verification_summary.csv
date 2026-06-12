@@ -1,5 +1,5 @@
 tool,epsilon,result,alpha_beta_crown_status,runtime_seconds,notes
 alpha-beta-CROWN,0.02,verified,safe-incomplete,17.44398,Verified with initial CROWN; no PGD violation found.
 alpha-beta-CROWN,0.2,falsified,unsafe-pgd,0.43998,PGD found an unsafe adversarial example.
-Marabou,0.02,verified,UNSAT,,Reference result from Assignment 3.
-Marabou,0.2,falsified,SAT,,Reference result from Assignment 3; target digit 8 counterexample.
+Marabou,0.02,verified,UNSAT,0.06094,Reference result from Assignment 3; sum of per-target runtimes.
+Marabou,0.2,falsified,SAT,11.11434,Reference result from Assignment 3; sum of per-target runtimes; target digit 8 counterexample.

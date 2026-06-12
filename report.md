@@ -18,10 +18,10 @@ The verified property is local L-infinity robustness: for all perturbed inputs x
 | --- | ---: | --- | --- | ---: |
 | alpha-beta-CROWN | 0.02 | verified | safe-incomplete | 17.44398 s |
 | alpha-beta-CROWN | 0.2 | falsified | unsafe-pgd | 0.43998 s |
-| Marabou | 0.02 | verified | UNSAT | recorded in Assignment 3 |
-| Marabou | 0.2 | falsified | SAT | recorded in Assignment 3 |
+| Marabou | 0.02 | verified | UNSAT | 0.06094 s |
+| Marabou | 0.2 | falsified | SAT | 11.11434 s |
 
-For epsilon 0.02, alpha-beta-CROWN first ran PGD and found no violation, then proved the property with initial CROWN bounds. For epsilon 0.2, PGD quickly found an unsafe adversarial example. This matches the qualitative Marabou behavior: the smaller perturbation was safe, while the larger perturbation admitted a counterexample.
+For epsilon 0.02, alpha-beta-CROWN first ran PGD and found no violation, then proved the property with initial CROWN bounds. For epsilon 0.2, PGD quickly found an unsafe adversarial example. This matches the qualitative Marabou behavior: the smaller perturbation was safe, while the larger perturbation admitted a counterexample. The Marabou runtime is reported as the sum of the per-target solve times stored in the Assignment 3 JSON results.
 
 ## Comparison and Discussion
 

@@ -86,7 +86,7 @@ same model family, sample, and perturbation sizes for comparison.
 
 | Epsilon | alpha-beta-CROWN result | Runtime | Marabou reference |
 | ---: | --- | ---: | --- |
-| 0.02 | verified (`safe-incomplete`) | 17.44398 s | verified (`UNSAT`) |
-| 0.2 | falsified (`unsafe-pgd`) | 0.43998 s | falsified (`SAT`) |
+| 0.02 | verified (`safe-incomplete`) | 17.44398 s | verified (`UNSAT`, 0.06094 s) |
+| 0.2 | falsified (`unsafe-pgd`) | 0.43998 s | falsified (`SAT`, 11.11434 s) |
 
 See `results/verification_summary.md` and the raw logs in `results/`.
